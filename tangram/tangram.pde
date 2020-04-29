@@ -15,14 +15,22 @@ int Posy7= 262;
 float angulo1, angulo2, angulo3, angulo4, angulo5, angulo6, angulo7= 0;
 int control=0;
 boolean espejo;
+PImage image;
+boolean toggle;
 
 void setup() {
   size(900, 600);
+  image=loadImage("imagen2.png");
 }
 
 
 void draw() {
   background(205);
+  tint(0);
+  image(image,400,20,415,485.738);
+  //if(toggle){
+  //  negative();
+  //}
   noStroke();
   fill(235, 122, 52);
   transladar();
@@ -245,3 +253,18 @@ void paralelogramo(){
    circle(0,0,50);
    pop(); 
 }
+
+//void negative (){
+  
+//  loadPixels();
+//  for (int i=10000; i<width * height ;i++){
+//    //lectura pixel a pixel 
+//    color c = pixels[i];
+//    pixels[i]=color(255-red(c),255-green(c),255-blue(c));
+//  }
+//  updatePixels();
+//}
+
+//void keyPressed(){
+//  toggle=!toggle;
+//}

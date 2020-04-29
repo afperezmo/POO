@@ -44,8 +44,6 @@ void draw() {
   paralelogramo();
   
   cuentapixeles();
-  print(contador1);
-  print("       ");
   pix = win(contador1);
   if ( pix == false){
     ganador();
@@ -278,15 +276,18 @@ void cuentapixeles(){
   }
 }
 boolean win( float contador){
-  if(contador<50) return false;
+  if(contador<5) return false;
   else return true;
 }
 
 void ganador(){
   background (random (0,255), random (0,255), random(0,255));
   fill (255);
+  push();
+  translate(0,0);
   textSize (100);
-  text("!Ganaste!", random (0,700), random (100,600));
+  text("!FELICITACIONES!", 50,height/2);
   delay (200);
+  pop();
 }
    

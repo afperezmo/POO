@@ -286,8 +286,7 @@ void ganador(){
   push();
   translate(0,0);
   textSize (100);
-  text("!FELICITACIONES!", 50,height/2);
+  text("!FELICITACIONES!", 25,height/2);
   delay (200);
   pop();
 }
-   

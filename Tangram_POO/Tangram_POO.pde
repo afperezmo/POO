@@ -10,7 +10,7 @@ boolean juega;
 
 void setup() {
   size(900, 600);
-  image=loadImage("tang_6.png");
+  image=loadImage("tang_4.png");
   botones= new Boton[2];
   botones[0]= new Boton(color(108,134,188),450,350,75,0,"Jugar",55);
   botones[1]= new Boton(color(108,134,188),450,450,75,0,"modo creador",15);
@@ -26,25 +26,11 @@ void setup() {
 
 
 void draw(){
-  background(178,70,57);
-  fill(255);
-  textSize (100);
-  rectMode(CENTER);
-  text("¡TANGRAM!",175, 175);
-  for (Boton bot : botones){
-    bot.draw();
-    bot.selec();
-  }
-  if (botones[0].selec == true){
-    juega = true;
-  }
-  if (botones[1].selec == true){
-    crea = true;
-  }
-  if (juega || crea == true){ 
+  menu();
+  if (juega || crea ){ 
     background(205);
     if (juega == true && crea == false){
-    image(image,0,0);
+    image(image,0,0,width-5,height-5);
     }
     noStroke();
     for (Shape figura : shapes){
@@ -59,6 +45,7 @@ void draw(){
     cuentapixeles();
     pix = win(contador);
     if ( pix == false){
+      println("GANA");
       ganador();
     }
     }
@@ -78,7 +65,7 @@ void cuentapixeles(){
   }
 }
 boolean win( float contador){
-  if(contador<5) return false;
+  if(contador<10) return false;
   else return true;
 }
 
@@ -109,14 +96,41 @@ void drawGrid(float scale) {
 }
 
 void keyPressed() {
-    if (key == 'g' || key == 'G')
+    if (key == 'g' || key == 'G'){
         drawGrid = !drawGrid;
-    if (key == 's' || key == 'S')
+    }
+    if (key == 's' || key == 'S'){
         guarda= !guarda;
+    }
+    if (key== ENTER){
+        guarda= false;
+        crea=false;  
+    //    menu();
+    //    print(crea, guarda);
+    }
 }
 
 void keyReleased(){
-    if (crea && guarda && key == 's' || key == 'S' )
-        save("data/tang_16.png");      
+    if (crea && guarda && key == 's' || key == 'S' ){
+        save("data/tang_16.png"); 
+        guarda= !guarda;
+    }
 }
-    
+
+void menu(){
+  background(178,70,57);
+  fill(255);
+  textSize (100);
+  rectMode(CENTER);
+  text("¡TANGRAM!",175, 175);
+  for (Boton bot : botones){
+    bot.draw();
+    bot.selec();
+  }
+  if (botones[0].selec == true && crea==false && juega == false){
+    juega = true;
+  }
+  if (botones[1].selec == true  && crea==false && juega == false){
+    crea = true;
+  }  
+}

@@ -2,13 +2,18 @@ int contador=0;
 PImage image;
 boolean pix = true; 
 Shape[]shapes;
-boolean drawGrid=true;
-boolean crea=true;
+Boton []botones;
+boolean drawGrid;
+boolean crea;
 boolean guarda;
+boolean juega;
 
 void setup() {
   size(900, 600);
-  image=loadImage("tang_1.png");
+  image=loadImage("tang_6.png");
+  botones= new Boton[2];
+  botones[0]= new Boton(color(108,134,188),450,350,75,0,"Jugar",55);
+  botones[1]= new Boton(color(108,134,188),450,450,75,0,"modo creador",15);
   shapes = new Shape[7];
   shapes[0]= new Triangle(color(201, 58, 58),150,50,50,0,1);
   shapes[1]= new Triangle(color(180, 201, 58),50,150,50,radians(-90),1);
@@ -21,25 +26,42 @@ void setup() {
 
 
 void draw(){
-  background(205);
-  if (crea == false){
-  image(image,0,0);
+  background(178,70,57);
+  fill(255);
+  textSize (100);
+  rectMode(CENTER);
+  text("¡TANGRAM!",175, 175);
+  for (Boton bot : botones){
+    bot.draw();
+    bot.selec();
   }
-  noStroke();
-  for (Shape figura : shapes){
-    figura.draw();
-    figura.mover();
-    figura.rotar();
+  if (botones[0].selec == true){
+    juega = true;
   }
-  if (drawGrid){
-    drawGrid(10);
+  if (botones[1].selec == true){
+    crea = true;
   }
-  if (crea == false){
-  cuentapixeles();
-  pix = win(contador);
-  if ( pix == false){
-    ganador();
-  }
+  if (juega || crea == true){ 
+    background(205);
+    if (juega == true && crea == false){
+    image(image,0,0);
+    }
+    noStroke();
+    for (Shape figura : shapes){
+      figura.draw();
+      figura.mover();
+      figura.rotar();
+    }
+    if (drawGrid){
+      drawGrid(10);
+    }
+    if (juega == true && crea == false){
+    cuentapixeles();
+    pix = win(contador);
+    if ( pix == false){
+      ganador();
+    }
+    }
   }
 }
 
@@ -95,6 +117,6 @@ void keyPressed() {
 
 void keyReleased(){
     if (crea && guarda && key == 's' || key == 'S' )
-        save("data/tang_6.png");      
+        save("data/tang_16.png");      
 }
     

@@ -4,7 +4,6 @@ class Shape {
   int posy;
   int dim;
   float angulo;
-  //boolean guard;
   
   Shape(int tinte, int posx,int posy, int dim, float angulo) {
     this.angulo = angulo;
@@ -47,12 +46,4 @@ class Shape {
       posy = mouseY;
     }
   }
-  
-  //void keyPressed() {
-  //  if (key == 'g' || key == 'G')
-  //      drawGrid = !drawGrid;
-  //  if (key == 's' || key == 'S')
-  //      guard= !guard;
-  //}
-
 }

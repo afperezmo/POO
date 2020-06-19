@@ -22,7 +22,6 @@ void setup() {
   niveles();
 }
 
-
 void draw(){
   menu();
   if(instruc==true){
@@ -30,7 +29,7 @@ void draw(){
   }
   if (juega || crea ){ 
     background(205);
-    if (juega == true && crea == false){
+    if (juega == true && crea == false && gana< saved){
     image(image,0,0,width-5,height-5);
     }
     noStroke();
@@ -68,6 +67,7 @@ void cuentapixeles(){
     }
   }
 }
+
 boolean win( float contador){
   if(contador<10) return false;
   else return true;
@@ -106,7 +106,7 @@ void keyPressed() {
     if (key == 's' || key == 'S'){
         guarda= !guarda;
     }
-    if (key== ENTER){
+    if (key == ENTER){
         juega=false;
         crea=false;
         instruc=false;
@@ -121,7 +121,7 @@ void keyReleased(){
     }
     if (key== ENTER){
         setup();
-        redraw();
+        draw();
     }    
 }
 
@@ -159,11 +159,11 @@ void inicio(){
   shapes[6]= new Quad (color(201, 58, 101),113,262,0,0);
 }
 
-void niveles(){
-   nivel();   
-}
+//void niveles(){
+//   nivel();   
+//}
 
-void nivel(){
+void niveles(){
   image=loadImage("tang_"+(gana+1)+".png");
   inicio();
 }
@@ -192,6 +192,6 @@ void instrucciones(){
   image(k,225,250,75,75);
   text("Guarda figura",300,400);
   image(s,187,350,75,75);
-  text("Cuadricula",300,500);
+  text("Dibuja cuadricula",300,500);
   image(g,187,450,75,75);
 }

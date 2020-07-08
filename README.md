@@ -1,7 +1,9 @@
 # POO
 
-REPOSITORIO CREADO PARA LA CLASE PROGRAMACION ORIENTADA OBJETOS
+ Este repo incluye los proyectos de la materia programación orientada a objetos 2020-1. 
 
-1.TANGRAM 
-2. PAINT POSENET
- 
+ - Tangram programado en Processing (Programación estructurada). 
+ - Tangram en Processing (POO) - Modo creador y modo jugador.
+ - Proyecto Final Pose Net.
+
+
